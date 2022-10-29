@@ -1,6 +1,5 @@
 import React from 'react';
-import { Statistics } from 'components/Statistics/Statistics';
-import { FeedbackOptions } from 'components/FeedbackOptions/FeedbackOptions';
+import { Section } from 'components/Section/Section';
 
 class App extends React.Component {
   state = {
@@ -11,11 +10,7 @@ class App extends React.Component {
   //Методы подсчета статистики
 
   countGoodFeedback = () => {
-    this.setState(prevState => {
-      return {
-        good: prevState.good + 1,
-      };
-    });
+    this.setState(prevState => ({ good: prevState.good + 1 }));
   };
   countNeutralFeedback = () => {
     this.setState(prevState => {
@@ -53,20 +48,16 @@ class App extends React.Component {
     //======================================================================
 
     return (
-      <div>
-        <FeedbackOptions
-          good={countGoodFeedback}
-          neutral={countNeutralFeedback}
-          bad={countBadFeedback}
-        ></FeedbackOptions>
-        <Statistics
-          good={good}
-          neutral={neutral}
-          bad={bad}
-          total={countTotalFeedback({ good, neutral, bad })}
-          percent={countPositiveFeedbackPercentage({ good, neutral, bad })}
-        ></Statistics>
-      </div>
+      <Section
+        good={countGoodFeedback}
+        neutral={countNeutralFeedback}
+        bad={countBadFeedback}
+        incrementGood={good}
+        incrementNeutral={neutral}
+        incrementBad={bad}
+        total={countTotalFeedback({ good, neutral, bad })}
+        percent={countPositiveFeedbackPercentage({ good, neutral, bad }) || 0}
+      ></Section>
     );
   }
 }

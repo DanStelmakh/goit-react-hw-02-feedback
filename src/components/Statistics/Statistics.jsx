@@ -4,17 +4,21 @@ import {
   Title,
   Item,
 } from 'components/Statistics/Statistics.styled';
+import { Notification } from 'components/Notification/Notification';
 
 class Statistics extends React.Component {
   render() {
-    const { good, neutral, bad, percent, total } = this.props;
-    return (
+    const { incrementGood, incrementNeutral, incrementBad, total, percent } =
+      this.props;
+    return incrementGood !== 0 ||
+      incrementNeutral !== 0 ||
+      incrementBad !== 0 ? (
       <div>
         <Title>Statistics</Title>
         <Statistic>
-          <Item>Good: {good}</Item>
-          <Item>Neutral: {neutral}</Item>
-          <Item>Bad: {bad}</Item>
+          <Item>Good: {incrementGood}</Item>
+          <Item>Neutral: {incrementNeutral}</Item>
+          <Item>Bad: {incrementBad}</Item>
           <Item>Total: {total}</Item>
           <Item>
             Positive feedback:
@@ -22,7 +26,10 @@ class Statistics extends React.Component {
           </Item>
         </Statistic>
       </div>
+    ) : (
+      <Notification message="There is no feedback"></Notification>
     );
   }
 }
+
 export { Statistics };

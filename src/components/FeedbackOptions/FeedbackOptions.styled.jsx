@@ -5,6 +5,7 @@ export const FeedBackOptions = styled.div`
   align-items: center;
   justify-content: center;
   gap: 15px;
+  margin-bottom: 30px;
 `;
 export const Btn = styled.button`
   padding: 10px;

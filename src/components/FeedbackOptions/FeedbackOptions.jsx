@@ -7,19 +7,19 @@ import {
 
 class FeedbackOptions extends React.Component {
   render() {
-    const { good, neutral, bad } = this.props;
+    const { goodFeedback, neutralFeedback, badFeedback } = this.props;
 
     return (
       <div>
         <Title>Please leave feedback</Title>
         <FeedBackOptions>
-          <Btn onClick={good} name="good">
+          <Btn onClick={goodFeedback} name="good">
             Good
           </Btn>
-          <Btn onClick={neutral} name="neutral">
+          <Btn onClick={neutralFeedback} name="neutral">
             Neutral
           </Btn>
-          <Btn onClick={bad} name="bad">
+          <Btn onClick={badFeedback} name="bad">
             Bad
           </Btn>
         </FeedBackOptions>
